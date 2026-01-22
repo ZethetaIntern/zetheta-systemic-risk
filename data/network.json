@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "id": "A", "name": "Bank A", "capital": 100 },
+    { "id": "B", "name": "Bank B", "capital": 80 },
+    { "id": "C", "name": "Bank C", "capital": 60 },
+    { "id": "D", "name": "Bank D", "capital": 90 },
+    { "id": "E", "name": "Bank E", "capital": 70 }
+  ],
+  "links": [
+    { "source": "A", "target": "B", "value": 40 },
+    { "source": "B", "target": "C", "value": 30 },
+    { "source": "C", "target": "D", "value": 20 },
+    { "source": "D", "target": "E", "value": 25 },
+    { "source": "E", "target": "A", "value": 15 }
+  ]
+}
