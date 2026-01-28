@@ -1,0 +1,23 @@
+[
+  {
+    "strategy": "Strategy A",
+    "return": 12,
+    "risk": 8,
+    "sharpe": 1.5,
+    "drawdown": -10
+  },
+  {
+    "strategy": "Strategy B",
+    "return": 9,
+    "risk": 5,
+    "sharpe": 1.8,
+    "drawdown": -6
+  },
+  {
+    "strategy": "Strategy C",
+    "return": 15,
+    "risk": 12,
+    "sharpe": 1.2,
+    "drawdown": -18
+  }
+]
