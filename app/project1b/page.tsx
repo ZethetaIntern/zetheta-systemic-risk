@@ -1,6 +1,14 @@
 "use client";
 
 import data from "../../data/strategyData.json";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function QuantitativeRiskDashboard() {
   return (
@@ -13,14 +21,15 @@ export default function QuantitativeRiskDashboard() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
+      <h1 style={{ textAlign: "center" }}>
         Quantitative Risk Dashboard
       </h1>
 
-      <p style={{ textAlign: "center", marginBottom: "30px", color: "#d1e8ff" }}>
-        Comparison of investment strategies based on risk and return metrics
+      <p style={{ textAlign: "center", color: "#d1e8ff" }}>
+        Risk & performance comparison of investment strategies
       </p>
 
+      {/* 🔹 TABLE CARD */}
       <div
         style={{
           backgroundColor: "#ffffff",
@@ -28,6 +37,7 @@ export default function QuantitativeRiskDashboard() {
           padding: "20px",
           color: "#000000",
           boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
+          marginBottom: "40px",
         }}
       >
         <table
@@ -42,8 +52,8 @@ export default function QuantitativeRiskDashboard() {
               <th style={thStyle}>Strategy</th>
               <th style={thStyle}>Return (%)</th>
               <th style={thStyle}>Risk</th>
-              <th style={thStyle}>Sharpe Ratio</th>
-              <th style={thStyle}>Max Drawdown (%)</th>
+              <th style={thStyle}>Sharpe</th>
+              <th style={thStyle}>Drawdown (%)</th>
             </tr>
           </thead>
 
@@ -94,6 +104,30 @@ export default function QuantitativeRiskDashboard() {
         </table>
       </div>
 
+      {/* 🔹 CHART CARD */}
+      <div
+        style={{
+          backgroundColor: "#ffffff",
+          borderRadius: "12px",
+          padding: "20px",
+          color: "#000000",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
+        }}
+      >
+        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
+          Sharpe Ratio Comparison
+        </h3>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={data}>
+            <XAxis dataKey="strategy" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="sharpe" fill="#2c5364" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
       <p
         style={{
           marginTop: "20px",
@@ -102,8 +136,7 @@ export default function QuantitativeRiskDashboard() {
           fontSize: "14px",
         }}
       >
-        Green values indicate better risk-adjusted performance. Red indicates
-        higher risk or drawdowns.
+        Higher Sharpe Ratio indicates better risk-adjusted performance.
       </p>
     </div>
   );
@@ -111,10 +144,8 @@ export default function QuantitativeRiskDashboard() {
 
 const thStyle = {
   padding: "12px",
-  borderBottom: "2px solid #ffffff",
 };
 
 const tdStyle = {
   padding: "10px",
-  borderBottom: "1px solid #cccccc",
 };
